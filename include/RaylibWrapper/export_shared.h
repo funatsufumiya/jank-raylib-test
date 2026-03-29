@@ -6,13 +6,19 @@
 #  define RAYLIBWRAPPER_SHARED_EXPORT
 #  define RAYLIBWRAPPER_SHARED_NO_EXPORT
 #else
+
 #  ifndef RAYLIBWRAPPER_SHARED_EXPORT
-#    ifdef raylibwrapper_shared_EXPORTS
-        /* We are building this library */
-#      define RAYLIBWRAPPER_SHARED_EXPORT __declspec(dllexport)
+#    if defined(_WIN32) || defined(_WIN64)
+#      ifdef raylibwrapper_shared_EXPORTS
+         /* We are building this library */
+#        define RAYLIBWRAPPER_SHARED_EXPORT __declspec(dllexport)
+#      else
+         /* We are using this library */
+#        define RAYLIBWRAPPER_SHARED_EXPORT __declspec(dllimport)
+#      endif
 #    else
-        /* We are using this library */
-#      define RAYLIBWRAPPER_SHARED_EXPORT __declspec(dllimport)
+         /* Non-Windows platforms */
+#      define RAYLIBWRAPPER_SHARED_EXPORT
 #    endif
 #  endif
 
