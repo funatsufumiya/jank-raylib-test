@@ -18,7 +18,13 @@
 #      endif
 #    else
          /* Non-Windows platforms */
-#      define RAYLIBWRAPPER_SHARED_EXPORT
+#      if defined(__GNUC__) && (__GNUC__ >= 4)
+#        define RAYLIBWRAPPER_SHARED_EXPORT __attribute__((visibility("default")))
+#        define RAYLIBWRAPPER_SHARED_NO_EXPORT __attribute__((visibility("hidden")))
+#      else
+#        define RAYLIBWRAPPER_SHARED_EXPORT
+#        define RAYLIBWRAPPER_SHARED_NO_EXPORT
+#      endif
 #    endif
 #  endif
 
