@@ -4,6 +4,10 @@
 
 #include <RaylibWrapper/c_api.h>
 
+rlw::Color raywhite = {245, 245, 245, 255};
+rlw::Color lightgray = { 200, 200, 200, 255 };
+
+/*
 void run()
 {
     const int screenWidth = 800;
@@ -17,17 +21,29 @@ void run()
     {
         rlw_BeginDrawing();
 
-            rlw_ClearBackground(RAYWHITE);
+            rlw_ClearBackground(raywhite);
 
-            rlw_DrawText(\"Congrats! You created your first window!\", 190, 200, 20, LIGHTGRAY);
+            rlw_DrawText(\"Congrats! You created your first window!\", 190, 200, 20, lightgray);
 
         rlw_EndDrawing();
     }
 
     rlw_CloseWindow();
 }
+*/
 
 ")
 
 (defn -main [& args]
-  (cpp/run))
+  (let [w 800
+        h 450]
+    (cpp/rlw_InitWindow w h "raylib [core] example - basic window")
+    (cpp/rlw_SetTargetFPS 60)
+    (while (cpp/! (cpp/rlw_WindowShouldClose))
+           (do
+             (cpp/rlw_BeginDrawing)
+             (cpp/rlw_ClearBackground cpp/raywhite)
+             (cpp/rlw_DrawText "Congrats! You created your first window!", 190, 200, 20, cpp/lightgray)
+             (cpp/rlw_EndDrawing))) 
+    (cpp/rlw_CloseWindow)
+    #_(cpp/run)))
