@@ -2,7 +2,7 @@
 
 ![docs/screenshot.png](docs/screenshot.png)
 
-Using https://github.com/funatsufumiya/raylib-namespace-wrapper/ in order to prevent name conflict especially in windows.
+Using https://github.com/funatsufumiya/raylib-namespace-wrapper/ in order to prevent name conflict especially on Windows.
 
 ```jank
 (ns jank-raylib-test.main)
