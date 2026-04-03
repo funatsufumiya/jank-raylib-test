@@ -1,6 +1,6 @@
 (defproject jank-raylib-test "0.1-SNAPSHOT"
-  :license {:name "MPL 2.0"
-            :url "https://www.mozilla.org/en-US/MPL/2.0/"}
+  :license {:name "MIT"
+            :url "https://mit-license.org/"}
   :dependencies []
   :plugins [[org.jank-lang/lein-jank "0.6"]]
   :middleware [leiningen.jank/middleware]
